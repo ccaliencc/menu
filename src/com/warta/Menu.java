@@ -1,5 +1,7 @@
 package com.warta;
 
+import interfaces.UruchamianyProgram;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.List;
 public class Menu {
 
     private HashMap<String, String> menu = new HashMap<>();
-
+    private ArrayList<UruchamianyProgram> dostepneFunkcje = new ArrayList<>();
 
 
     public HashMap<String, String> getMenu() {
@@ -15,8 +17,15 @@ public class Menu {
     }
 
 
-    public void addMenu(String opis, String nazwaKlasy) {
+    public ArrayList<UruchamianyProgram> getDostepneFunkcje() {
+        return dostepneFunkcje;
+    }
+
+
+
+    public void addMenu(String opis, String nazwaKlasy, UruchamianyProgram obiektDoMenu) {
         this.menu.put(opis, nazwaKlasy);
+        this.dostepneFunkcje.add(obiektDoMenu);
 
     }
 

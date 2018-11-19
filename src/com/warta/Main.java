@@ -6,20 +6,17 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner reader = new Scanner(System.in);
         String numer = "";
 
         Menu menu = new Menu();
 
-        ArrayList<UruchamianyProgram> dostepneFunkcje = new ArrayList<>();
-
         UruchamianyProgram sredniaWartosc = new SredniaWartosc();
-        dostepneFunkcje.add(sredniaWartosc);
         sredniaWartosc.setOpisFunkcji("Licz Wartość Średnią");
 
-
         sredniaWartosc.setNazwaObiektu(sredniaWartosc.getClass().getSimpleName());
-        menu.addMenu(sredniaWartosc.getOpisFunkcji(), sredniaWartosc.getClass().getSimpleName());
+        menu.addMenu(sredniaWartosc.getOpisFunkcji(), sredniaWartosc.getClass().getSimpleName(), sredniaWartosc);
 
 
         menu.wczytajNaglowek();
@@ -35,7 +32,7 @@ public class Main {
 
                 }
                 else {
-                    dostepneFunkcje.get(wielkoscMenu).uruchom();
+                    menu.getDostepneFunkcje().get(num).uruchom();
 
                 }
 
