@@ -1,4 +1,6 @@
 package com.warta;
+
+import com.warta.Util.SprawdzanieDanychWE;
 import interfaces.*;
 
 import java.util.Scanner;
@@ -10,33 +12,29 @@ public class Main {
         String numer = "";
 
         Menu menu = new Menu();
+        Inicjalizacja inicjalizacja = new Inicjalizacja();
+        SprawdzanieDanychWE sprawdzanieDanychWE = new SprawdzanieDanychWE();
 
-        UruchamianyProgram sredniaWartosc = new SredniaWartosc();
-        sredniaWartosc.setOpisFunkcji("Licz Wartość Średnią");
-
-        sredniaWartosc.setNazwaObiektu(sredniaWartosc.getClass().getSimpleName());
-        menu.addMenu(sredniaWartosc.getOpisFunkcji(), sredniaWartosc.getClass().getSimpleName(), sredniaWartosc);
-
+        inicjalizacja.dodajdoMenu(menu);
 
         menu.wczytajNaglowek();
 
         do {
-            try {
-                menu.wczytajMenu();
-                numer = reader.next();
+            boolean toNumeric = false;
+
+            menu.wczytajMenu();
+            numer = reader.next();
+            toNumeric = sprawdzanieDanychWE.sprawdzNumeric(numer);
+            if (toNumeric) {
                 int wielkoscMenu = menu.getMenu().size() - 1;
                 int num = Integer.parseInt(numer);
                 if (num > wielkoscMenu) {
                     System.out.println("Wpisz wartość z zakresu 0 - " + wielkoscMenu + "\n");
 
-                }
-                else {
+                } else {
                     menu.getDostepneFunkcje().get(num).uruchom();
 
                 }
-
-            } catch (NumberFormatException e) {
-                System.out.println("Wpisz wartość numeryczną\n");
             }
 
 
