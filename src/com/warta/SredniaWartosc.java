@@ -1,4 +1,5 @@
 package com.warta;
+import com.warta.Util.SprawdzanieDanychWE;
 import interfaces.*;
 
 import java.util.ArrayList;
@@ -39,16 +40,19 @@ public class SredniaWartosc implements UruchamianyProgram{
        System.out.println(getOpisFunkcji());
 
         List<Double> lista = new ArrayList<>();
+        SprawdzanieDanychWE sprawdzanieDanychWE = new SprawdzanieDanychWE();
         Scanner reader = new Scanner(System.in);
         double sum = 0.0;
         double number;
+        boolean toNumeric = false;
         String numer;
         do {
             System.out.print("Wpisz liczbę lub 'licz' żeby wyliczyć średnią:  ");
 
             numer = reader.next();
+            toNumeric = sprawdzanieDanychWE.sprawdzNumeric(numer);
 
-            if (!numer.equals("licz")) {
+            if (!numer.equals("licz")&& toNumeric) {
                 number = Double.parseDouble(numer);
                 System.out.println("Wpisałeś liczbę: " + number);
 

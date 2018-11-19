@@ -1,7 +1,6 @@
 package com.warta;
 import interfaces.*;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {

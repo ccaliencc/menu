@@ -22,7 +22,6 @@ public class Menu {
     }
 
 
-
     public void addMenu(String opis, String nazwaKlasy, UruchamianyProgram obiektDoMenu) {
         this.menu.put(opis, nazwaKlasy);
         this.dostepneFunkcje.add(obiektDoMenu);
