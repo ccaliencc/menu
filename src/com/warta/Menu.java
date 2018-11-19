@@ -1,18 +1,20 @@
 package com.warta;
 
+import com.warta.Util.SprawdzanieDanychWE;
 import interfaces.UruchamianyProgram;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class Menu {
 
-    private HashMap<String, String> menu = new HashMap<>();
+    private ArrayList<String> menu = new ArrayList<>();
     private ArrayList<UruchamianyProgram> dostepneFunkcje = new ArrayList<>();
 
 
-    public HashMap<String, String> getMenu() {
+    public ArrayList<String> getMenu() {
         return menu;
     }
 
@@ -22,8 +24,8 @@ public class Menu {
     }
 
 
-    public void addMenu(String opis, String nazwaKlasy, UruchamianyProgram obiektDoMenu) {
-        this.menu.put(opis, nazwaKlasy);
+    public void addMenu(String opis, UruchamianyProgram obiektDoMenu) {
+        this.menu.add(opis);
         this.dostepneFunkcje.add(obiektDoMenu);
 
     }
@@ -38,14 +40,38 @@ public class Menu {
 
     public void wczytajMenu() {
 
-        List<String> indexes = new ArrayList<String>(menu.keySet());
-        indexes.indexOf(0);
+
         System.out.println("MENU:");
-        for (int i = 0; i < indexes.size(); i++)
-            System.out.println(i + ": " + indexes.get(i));
+        for (int i = 0; i < menu.size(); i++)
+            System.out.println(i + ": " + menu.get(i));
 
 
         System.out.println("\nWybierz funkcję programu :");
+    }
+
+    public void wlaczpodprogram() {
+        String numer;
+        Scanner reader = new Scanner(System.in);
+        do {
+            boolean toNumeric = false;
+            SprawdzanieDanychWE sprawdzanieDanychWE = new SprawdzanieDanychWE();
+            this.wczytajMenu();
+            numer = reader.next();
+            toNumeric = sprawdzanieDanychWE.sprawdzNumeric(numer);
+            if (toNumeric) {
+                int wielkoscMenu = this.getMenu().size() - 1;
+                int num = Integer.parseInt(numer);
+                if (num > wielkoscMenu) {
+                    System.out.println("Wpisz wartość z zakresu 0 - " + wielkoscMenu + "\n");
+
+                } else {
+                    this.getDostepneFunkcje().get(num).uruchom();
+
+                }
+            }
+
+        } while (!numer.equals("exit"));
+
     }
 
 
