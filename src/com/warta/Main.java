@@ -1,4 +1,5 @@
 package com.warta;
+import interfaces.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,8 +10,18 @@ public class Main {
         String numer = "";
 
         Menu menu = new Menu();
-        SredniaWartosc sredniaWartosc = new SredniaWartosc();
-        menu.addMenu("Licz wartość średnią", "SredniaWartosc");
+
+        ArrayList<UruchamianyProgram> dostepneFunkcje = new ArrayList<>();
+
+        UruchamianyProgram sredniaWartosc = new SredniaWartosc();
+        dostepneFunkcje.add(sredniaWartosc);
+        sredniaWartosc.setOpisFunkcji("Licz Wartość Średnią");
+
+
+        sredniaWartosc.setNazwaObiektu(sredniaWartosc.getClass().getSimpleName());
+        menu.addMenu(sredniaWartosc.getOpisFunkcji(), sredniaWartosc.getClass().getSimpleName());
+
+
         menu.wczytajNaglowek();
 
         do {
@@ -22,8 +33,10 @@ public class Main {
                 if (num > wielkoscMenu) {
                     System.out.println("Wpisz wartość z zakresu 0 - " + wielkoscMenu + "\n");
 
-                } else {
-                    menu.getMenuObiektow().get("SredniaWartosc");
+                }
+                else {
+                    dostepneFunkcje.get(wielkoscMenu).uruchom();
+
                 }
 
             } catch (NumberFormatException e) {
