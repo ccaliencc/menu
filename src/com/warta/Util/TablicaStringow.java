@@ -23,7 +23,7 @@ public class TablicaStringow {
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
-            int count = 0;
+            int count = 1;
 
             @Override
             public void run() {
@@ -40,16 +40,18 @@ public class TablicaStringow {
                 }
 
 
-                if (count >= tablicaZnaki.size()) {
+                if (count > tablicaZnaki.size()) {
 
-                    String usuniete = tablicaZnaki.removeLast();
-                    tablicaZnaki.add(usuniete);
+                    String usuniete1 = tablicaZnaki.removeLast();
+                    String usuniete2 = tablicaZnaki.removeFirst();
+                    tablicaZnaki.addFirst(usuniete2);
+                    tablicaZnaki.addFirst(usuniete1);
 
                 }
                 if (count < 2 * tablicaZnaki.size()) {
                     count++;
                 } else {
-                    count = 0;
+                    count = 1;
                 }
 
 
