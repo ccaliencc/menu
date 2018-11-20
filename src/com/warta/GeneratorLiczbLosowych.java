@@ -1,5 +1,6 @@
-package com.warta.Util;
+package com.warta;
 
+import com.warta.Util.SprawdzanieDanychWE;
 import interfaces.UruchamianyProgram;
 import java.util.Random;
 import java.util.Scanner;

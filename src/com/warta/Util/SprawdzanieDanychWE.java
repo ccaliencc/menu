@@ -9,7 +9,20 @@ public class SprawdzanieDanychWE {
             int num = Integer.parseInt(Wartosc);
             poprawne=true;
 
-        } catch (NumberFormatException e) {
+        }
+        catch (NumberFormatException e) {
+        }
+
+        try {
+            double num = Double.parseDouble(Wartosc);
+            poprawne=true;
+
+        }
+        catch (NumberFormatException e) {
+        }
+
+        if (!poprawne)
+        {
             System.out.println("Wpisz wartość numeryczną\n");
         }
 
