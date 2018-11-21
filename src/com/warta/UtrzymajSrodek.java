@@ -50,10 +50,24 @@ public class UtrzymajSrodek implements UruchamianyProgram {
             toNumeric = sprawdzanieDanychWE.sprawdzNumeric(numer);
 
             if (toNumeric && !numer.equals("stop")) {
-//                countdownTimer.setCountdown(numer);
-//                countdownTimer.countingDown();
-                wyswietlacz.testujDzialanie();
 
+                int pozostaloCzasu;
+                String joined;
+                int number = Integer.parseInt(numer);
+                countdownTimer.setCountdown(number);
+                countdownTimer.countingDown();
+                wyswietlacz.testujDzialanie();
+                do {
+
+                    System.out.print("\r");
+
+                    pozostaloCzasu = countdownTimer.getCountdown();
+                    joined= wyswietlacz.getJoined();
+
+
+                    System.out.print(pozostaloCzasu + " " + joined);
+
+                }while (!countdownTimer.isCanceled());
 
             }
 

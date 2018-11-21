@@ -1,9 +1,6 @@
 package com.warta.Util;
 
-import com.sun.jmx.remote.internal.ArrayQueue;
-
 import java.util.ArrayDeque;
-import java.util.Queue;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -12,9 +9,14 @@ public class TablicaStringow {
     ArrayDeque<String> tablicaZnaki = new ArrayDeque<String>();
     static String horizon = "_";
     static String vertical = "|";
+    String joined;
 
+    public String getJoined() {
+        return joined;
+    }
 
     public void testujDzialanie() {
+        tablicaZnaki.add(horizon);
         tablicaZnaki.add(horizon);
         tablicaZnaki.add(horizon);
         tablicaZnaki.add(horizon);
@@ -25,14 +27,12 @@ public class TablicaStringow {
         timer.schedule(new TimerTask() {
             int count = 1;
 
+
             @Override
             public void run() {
 
-                System.out.print("\r");
-                String joined = String.join("", tablicaZnaki);
+                joined = String.join("", tablicaZnaki);
 
-
-                System.out.print(joined);
 
                 if (count < tablicaZnaki.size()) {
                     String usuniete = tablicaZnaki.remove();
@@ -40,7 +40,7 @@ public class TablicaStringow {
                 }
 
 
-                if (count > tablicaZnaki.size()) {
+                if (count >= tablicaZnaki.size()) {
 
                     String usuniete1 = tablicaZnaki.removeLast();
                     String usuniete2 = tablicaZnaki.removeFirst();
@@ -48,7 +48,7 @@ public class TablicaStringow {
                     tablicaZnaki.addFirst(usuniete1);
 
                 }
-                if (count < 2 * tablicaZnaki.size()) {
+                if (count < (2 * tablicaZnaki.size()) - 2) {
                     count++;
                 } else {
                     count = 1;
@@ -56,8 +56,12 @@ public class TablicaStringow {
 
 
             }
-        }, 0, 300);
 
+            @Override
+            public boolean cancel() {
+                return super.cancel();
+            }
+        }, 0, 300);
 
     }
 

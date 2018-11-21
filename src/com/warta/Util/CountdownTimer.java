@@ -4,22 +4,24 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class CountdownTimer {
-    int countdown;
+   private int countdown;
+   private boolean canceled;
 
-    public CountdownTimer() {
-        this.countdown = 10;
+    public int getCountdown() {
+        return countdown;
+    }
+
+    public boolean isCanceled() {
+        return canceled;
     }
 
     public void countingDown() {
-
 
         new Timer().schedule(new TimerTask() {
 
             @Override
             public void run() {
-                System.out.print("\r");
                 if (countdown != 0) {
-                    System.out.print(countdown);
                     countdown = countdown - 1;
 
                 } else if (countdown == 0)
@@ -27,19 +29,18 @@ public class CountdownTimer {
 
             }
 
+
             @Override
             public boolean cancel() {
-                return super.cancel();
+                return canceled = super.cancel();
             }
 
-        }, 0, 1000);
 
+        }, 0, 1000);
     }
 
-
-    public void setCountdown(String countdown) {
-        int num = Integer.parseInt(countdown);
-        this.countdown = num;
+    public void setCountdown(int countdown) {
+        this.countdown = countdown;
     }
 }
 
