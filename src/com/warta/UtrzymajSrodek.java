@@ -52,16 +52,24 @@ public class UtrzymajSrodek implements UruchamianyProgram {
             if (toNumeric && !numer.equals("stop")) {
 
                 int pozostaloCzasu;
-                String joined;
+                String joined="";
                 int number = Integer.parseInt(numer);
                 countdownTimer.setCountdown(number);
+
                 countdownTimer.countingDown();
                 wyswietlacz.testujDzialanie();
+                countdownTimer.setBlokuj(false);
+                wyswietlacz.setBlokuj(false);
+
                 do {
+
 
                     System.out.print("\r");
 
+
+
                     pozostaloCzasu = countdownTimer.getCountdown();
+
                     joined= wyswietlacz.getJoined();
 
 

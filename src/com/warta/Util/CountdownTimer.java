@@ -6,9 +6,18 @@ import java.util.TimerTask;
 public class CountdownTimer {
    private int countdown;
    private boolean canceled;
+   private boolean blokuj;
+
+    public CountdownTimer() {
+        this.blokuj = false;
+    }
 
     public int getCountdown() {
         return countdown;
+    }
+
+    public void setBlokuj(boolean blokuj) {
+        this.blokuj = blokuj;
     }
 
     public boolean isCanceled() {
@@ -17,26 +26,30 @@ public class CountdownTimer {
 
     public void countingDown() {
 
-        new Timer().schedule(new TimerTask() {
+        if (!blokuj) {
+            new Timer().schedule(new TimerTask() {
 
-            @Override
-            public void run() {
-                if (countdown != 0) {
-                    countdown = countdown - 1;
-
-                } else if (countdown == 0)
-                    cancel();
-
-            }
+                @Override
+                public void run() {
+                    if (countdown != 0) {
+                        countdown = countdown - 1;
 
 
-            @Override
-            public boolean cancel() {
-                return canceled = super.cancel();
-            }
+                    } else if (countdown == 0)
+                        cancel();
+
+                }
 
 
-        }, 0, 1000);
+                @Override
+                public boolean cancel() {
+                    return canceled = super.cancel();
+                }
+
+
+            }, 0, 1000);
+        }
+
     }
 
     public void setCountdown(int countdown) {
