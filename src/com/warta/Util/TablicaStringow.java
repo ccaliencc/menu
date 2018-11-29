@@ -21,7 +21,6 @@ public class TablicaStringow {
     static String vertical = "|";
     String joined;
     private boolean blokuj;
-    private boolean cancelTimer;
 
 
     public TablicaStringow() {
@@ -43,11 +42,9 @@ public class TablicaStringow {
         tablicaZnaki.clear();
 
         if (!blokuj) {
-            tablicaZnaki.add(horizon);
-            tablicaZnaki.add(horizon);
-            tablicaZnaki.add(horizon);
-            tablicaZnaki.add(horizon);
-            tablicaZnaki.add(horizon);
+            for (int i=0; i<4;i++) {
+                tablicaZnaki.add(horizon);
+            }
             tablicaZnaki.add(vertical);
 
 
@@ -89,7 +86,7 @@ public class TablicaStringow {
                     return super.cancel();
                 }
 
-            }, 0, 300);
+            }, 0, 200);
         }
 
     }
