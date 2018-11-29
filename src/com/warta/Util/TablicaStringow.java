@@ -7,10 +7,21 @@ import java.util.TimerTask;
 public class TablicaStringow {
 
     ArrayDeque<String> tablicaZnaki = new ArrayDeque<String>();
+    private Timer timer = new Timer();
+
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+
     static String horizon = "_";
     static String vertical = "|";
     String joined;
     private boolean blokuj;
+    private boolean cancelTimer;
 
 
     public TablicaStringow() {
@@ -21,11 +32,16 @@ public class TablicaStringow {
         this.blokuj = blokuj;
     }
 
+
+
     public String getJoined() {
         return joined;
     }
 
+
     public void testujDzialanie() {
+        tablicaZnaki.clear();
+
         if (!blokuj) {
             tablicaZnaki.add(horizon);
             tablicaZnaki.add(horizon);
@@ -34,10 +50,9 @@ public class TablicaStringow {
             tablicaZnaki.add(horizon);
             tablicaZnaki.add(vertical);
 
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                int count = 1;
 
+            getTimer().schedule(new TimerTask() {
+                int count = 1;
 
                 @Override
                 public void run() {
@@ -59,7 +74,8 @@ public class TablicaStringow {
                         tablicaZnaki.addFirst(usuniete1);
 
                     }
-                    if (count < (2 * tablicaZnaki.size()) - 2) {
+                    Integer doPetli = (2 * tablicaZnaki.size()) - 2;
+                    if (count < doPetli) {
                         count++;
                     } else {
                         count = 1;
@@ -72,6 +88,7 @@ public class TablicaStringow {
                 public boolean cancel() {
                     return super.cancel();
                 }
+
             }, 0, 300);
         }
 

@@ -7,9 +7,18 @@ public class CountdownTimer {
    private int countdown;
    private boolean canceled;
    private boolean blokuj;
+    private Timer timer = new Timer();
 
     public CountdownTimer() {
         this.blokuj = false;
+    }
+
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
     }
 
     public int getCountdown() {
@@ -27,15 +36,17 @@ public class CountdownTimer {
     public void countingDown() {
 
         if (!blokuj) {
-            new Timer().schedule(new TimerTask() {
+
+            getTimer().schedule(new TimerTask() {
 
                 @Override
                 public void run() {
-                    if (countdown != 0) {
-                        countdown = countdown - 1;
+                    int countdownNow=getCountdown();
+                    if (countdownNow != 0) {
+                       setCountdown(countdownNow - 1);
 
 
-                    } else if (countdown == 0)
+                    } else if (countdownNow == 0)
                         cancel();
 
                 }
