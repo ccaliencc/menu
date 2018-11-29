@@ -37,28 +37,26 @@ public class UtrzymajSrodek implements UruchamianyProgram {
     @Override
     public void uruchom() {
         Scanner reader = new Scanner(System.in);
-
-        TablicaStringow wyswietlacz = new TablicaStringow();
-
         SprawdzanieDanychWE sprawdzanieDanychWE = new SprawdzanieDanychWE();
         String numer;
         boolean toNumeric;
 
         do {
             System.out.print("Wpisz czas do odliczenia lub 'stop' by wyjść  ");
-            CountdownTimer countdownTimer = new CountdownTimer();
+
             numer = reader.next();
             toNumeric = sprawdzanieDanychWE.sprawdzNumeric(numer);
 
             if (toNumeric && !numer.equals("stop")) {
-
+                CountdownTimer countdownTimer = new CountdownTimer();
+                TablicaStringow wyswietlacz = new TablicaStringow();
                 int pozostaloCzasu;
                 String joined="";
                 int number = Integer.parseInt(numer);
                 countdownTimer.setCountdown(number);
-                countdownTimer.countingDown();
                 Timer timer = new Timer();
                 countdownTimer.setTimer(timer);
+                countdownTimer.countingDown();
                 Timer timerWyswietlacz = new Timer();
                 wyswietlacz.setTimer(timerWyswietlacz);
                 wyswietlacz.testujDzialanie();
