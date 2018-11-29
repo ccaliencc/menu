@@ -4,9 +4,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class CountdownTimer {
-   private int countdown;
-   private boolean canceled;
-   private boolean blokuj;
+    private int countdown;
+    private boolean canceled;
+    private boolean blokuj;
     private Timer timer = new Timer();
 
     public CountdownTimer() {
@@ -25,6 +25,10 @@ public class CountdownTimer {
         return countdown;
     }
 
+    public void setCountdown(int countdown) {
+        this.countdown = countdown;
+    }
+
     public void setBlokuj(boolean blokuj) {
         this.blokuj = blokuj;
     }
@@ -41,13 +45,13 @@ public class CountdownTimer {
 
                 @Override
                 public void run() {
-                    int countdownNow=getCountdown();
-                    if (countdownNow != 0) {
-                       setCountdown(countdownNow - 1);
+                    if (countdown > 0) {
 
+                        countdown -= 1;
 
-                    } else if (countdownNow == 0)
-                        cancel();
+                    } else {
+                        this.cancel();
+                    }
 
                 }
 
@@ -63,9 +67,7 @@ public class CountdownTimer {
 
     }
 
-    public void setCountdown(int countdown) {
-        this.countdown = countdown;
-    }
+
 }
 
 

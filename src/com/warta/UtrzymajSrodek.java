@@ -53,7 +53,7 @@ public class UtrzymajSrodek implements UruchamianyProgram {
                 int pozostaloCzasu;
                 String joined="";
                 int number = Integer.parseInt(numer);
-                countdownTimer.setCountdown(number);
+                countdownTimer.setCountdown(number+1);
                 Timer timer = new Timer();
                 countdownTimer.setTimer(timer);
                 countdownTimer.countingDown();
