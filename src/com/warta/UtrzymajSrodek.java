@@ -64,8 +64,9 @@ public class UtrzymajSrodek implements UruchamianyProgram {
                 wyswietlacz.setBlokuj(false);
 
                 do {
-
-                    System.out.print("\r");
+                    if (wyswietlacz.isWpisane()) {
+                        System.out.print("\r");
+                    }
 
                     pozostaloCzasu = countdownTimer.getCountdown();
 

@@ -21,6 +21,7 @@ public class TablicaStringow {
     static String vertical = "|";
     String joined;
     private boolean blokuj;
+    private boolean wpisane;
 
 
     public TablicaStringow() {
@@ -31,7 +32,9 @@ public class TablicaStringow {
         this.blokuj = blokuj;
     }
 
-
+    public boolean isWpisane() {
+        return wpisane;
+    }
 
     public String getJoined() {
         return joined;
@@ -53,6 +56,7 @@ public class TablicaStringow {
 
                 @Override
                 public void run() {
+                    wpisane=false;
 
                     joined = String.join("", tablicaZnaki);
 
@@ -77,6 +81,7 @@ public class TablicaStringow {
                     } else {
                         count = 1;
                     }
+                    wpisane=true;
 
 
                 }
