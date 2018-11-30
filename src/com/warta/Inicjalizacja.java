@@ -16,8 +16,8 @@ public class Inicjalizacja {
         sredniaWartosc.setOpisFunkcji("Wylicz Wartość Średnią");
         GeneratorLiczbLosowych generatorLiczbLosowych = new GeneratorLiczbLosowych();
         generatorLiczbLosowych.setOpisFunkcji("Losuj liczbę z przedziału 0 - 1000");
-        UtrzymajSrodek utrzymajSrodek = new UtrzymajSrodek();
-        utrzymajSrodek.setOpisFunkcji("Pulsujący znacznik z timerem");
+        PingPong pingPong = new PingPong();
+        pingPong.setOpisFunkcji("Ping Pong");
         Szlaczek szlaczek = new Szlaczek();
         szlaczek.setOpisFunkcji("Szlaczek");
 
@@ -26,7 +26,7 @@ public class Inicjalizacja {
 
         dostepneFunkcje.add(sredniaWartosc);
         dostepneFunkcje.add(generatorLiczbLosowych);
-        dostepneFunkcje.add(utrzymajSrodek);
+        dostepneFunkcje.add(pingPong);
         dostepneFunkcje.add(szlaczek);
 
         for (int i = 0; i < dostepneFunkcje.size(); i++)

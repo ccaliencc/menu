@@ -18,10 +18,10 @@ public class TablicaStringow {
     }
 
     static String horizon = "_";
+    static String ball = "o";
     static String vertical = "|";
     String joined;
     private boolean blokuj;
-    private boolean wpisane;
 
 
     public TablicaStringow() {
@@ -32,23 +32,23 @@ public class TablicaStringow {
         this.blokuj = blokuj;
     }
 
-    public boolean isWpisane() {
-        return wpisane;
-    }
 
     public String getJoined() {
         return joined;
     }
 
 
-    public void testujDzialanie() {
+    public void testujDzialanie(Integer predkosc, Integer dlugoscStolu) {
         tablicaZnaki.clear();
 
         if (!blokuj) {
-            for (int i=0; i<4;i++) {
+            for (int i=0; i<dlugoscStolu+1;i++) {
                 tablicaZnaki.add(horizon);
             }
-            tablicaZnaki.add(vertical);
+            tablicaZnaki.add(ball);
+            tablicaZnaki.addLast(vertical);
+            tablicaZnaki.addFirst(vertical);
+
 
 
             getTimer().schedule(new TimerTask() {
@@ -56,32 +56,38 @@ public class TablicaStringow {
 
                 @Override
                 public void run() {
-                    wpisane=false;
 
                     joined = String.join("", tablicaZnaki);
 
-
-                    if (count < tablicaZnaki.size()) {
+                    if (count < tablicaZnaki.size()-2) {
+                        tablicaZnaki.removeFirst();
+                        tablicaZnaki.removeLast();
                         String usuniete = tablicaZnaki.remove();
                         tablicaZnaki.add(usuniete);
+                        tablicaZnaki.addLast(vertical);
+                        tablicaZnaki.addFirst(vertical);
+
                     }
 
+                    if (count >= tablicaZnaki.size()-2) {
 
-                    if (count >= tablicaZnaki.size()) {
-
+                        tablicaZnaki.removeFirst();
+                        tablicaZnaki.removeLast();
                         String usuniete1 = tablicaZnaki.removeLast();
                         String usuniete2 = tablicaZnaki.removeFirst();
                         tablicaZnaki.addFirst(usuniete2);
                         tablicaZnaki.addFirst(usuniete1);
-
+                        tablicaZnaki.addLast(vertical);
+                        tablicaZnaki.addFirst(vertical);
                     }
-                    Integer doPetli = (2 * tablicaZnaki.size()) - 2;
+
+
+                    Integer doPetli = (2 * (tablicaZnaki.size()-2)) - 2;
                     if (count < doPetli) {
                         count++;
                     } else {
                         count = 1;
                     }
-                    wpisane=true;
 
 
                 }
@@ -91,7 +97,7 @@ public class TablicaStringow {
                     return super.cancel();
                 }
 
-            }, 0, 200);
+            }, 0, predkosc*100); // np 1*100 to predkosc 100 co odpowiada timerowi 100ms
         }
 
     }
