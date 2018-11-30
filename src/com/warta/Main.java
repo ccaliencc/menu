@@ -1,6 +1,8 @@
 package com.warta;
 
 
+import java.util.Set;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -8,6 +10,7 @@ public class Main {
         inicjalizacja.getMenu().wlaczpodprogram();
 
         System.out.println("ZAKOŃCZENIE PROGRAMU. DO ZOBACZENIA!");
+        System.exit(0);
 
     }
 }

@@ -53,7 +53,7 @@ public class UtrzymajSrodek implements UruchamianyProgram {
                 int pozostaloCzasu;
                 String joined="";
                 int number = Integer.parseInt(numer);
-                countdownTimer.setCountdown(number+1);
+                countdownTimer.setCountdown(number);
                 Timer timer = new Timer();
                 countdownTimer.setTimer(timer);
                 countdownTimer.countingDown();
@@ -63,18 +63,20 @@ public class UtrzymajSrodek implements UruchamianyProgram {
                 countdownTimer.setBlokuj(false);
                 wyswietlacz.setBlokuj(false);
 
-                do {
+                while (!countdownTimer.isCanceled()) {
                     if (wyswietlacz.isWpisane()) {
                         System.out.print("\r");
                     }
 
-                    pozostaloCzasu = countdownTimer.getCountdown();
+                    pozostaloCzasu = countdownTimer.getCountdown() +1;
 
                     joined= wyswietlacz.getJoined();
 
                     System.out.print(pozostaloCzasu + " " + joined);
 
-                }while (!countdownTimer.isCanceled());
+                }
+                System.out.print("\r");
+                System.out.print(0 + " " + joined + "\n");
 
                 wyswietlacz.getTimer().cancel();
 

@@ -17,12 +17,17 @@ public class Inicjalizacja {
         GeneratorLiczbLosowych generatorLiczbLosowych = new GeneratorLiczbLosowych();
         generatorLiczbLosowych.setOpisFunkcji("Losuj liczbę z przedziału 0 - 1000");
         UtrzymajSrodek utrzymajSrodek = new UtrzymajSrodek();
-        utrzymajSrodek.setOpisFunkcji("Utrzymaj znacznik na środku");
+        utrzymajSrodek.setOpisFunkcji("Pulsujący znacznik z timerem");
+        Szlaczek szlaczek = new Szlaczek();
+        szlaczek.setOpisFunkcji("Szlaczek");
+
+
 
 
         dostepneFunkcje.add(sredniaWartosc);
         dostepneFunkcje.add(generatorLiczbLosowych);
         dostepneFunkcje.add(utrzymajSrodek);
+        dostepneFunkcje.add(szlaczek);
 
         for (int i = 0; i < dostepneFunkcje.size(); i++)
             menu.addMenu(dostepneFunkcje.get(i).getOpisFunkcji(), dostepneFunkcje.get(i));

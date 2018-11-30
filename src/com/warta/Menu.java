@@ -53,7 +53,7 @@ public class Menu {
         String numer;
         Scanner reader = new Scanner(System.in);
         do {
-            boolean toNumeric = false;
+            boolean toNumeric;
             SprawdzanieDanychWE sprawdzanieDanychWE = new SprawdzanieDanychWE();
             this.wczytajMenu();
             numer = reader.next();
