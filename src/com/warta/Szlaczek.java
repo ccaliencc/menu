@@ -35,7 +35,6 @@ public class Szlaczek implements UruchamianyProgram {
     public void uruchom() {
         Scanner reader = new Scanner(System.in);
         String numer;
-        boolean toNumeric;
 
         do {
             System.out.print("Wpisz 'start' żeby wystartować szlaczek, 'stop' by wyjść  ");
