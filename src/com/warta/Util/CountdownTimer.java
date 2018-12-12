@@ -58,7 +58,7 @@ public class CountdownTimer {
 
                 @Override
                 public boolean cancel() {
-                    return super.cancel();
+                    return canceled = super.cancel();
                 }
 
 
