@@ -1,8 +1,6 @@
 package com.warta;
 
-import com.warta.Util.SprawdzanieDanychWE;
 import interfaces.UruchamianyProgram;
-import java.util.Random;
 import java.util.Scanner;
 
 public class GeneratorLiczbLosowych implements UruchamianyProgram {
@@ -37,7 +35,6 @@ public class GeneratorLiczbLosowych implements UruchamianyProgram {
     {
         System.out.println(getOpisFunkcji());
 
-        SprawdzanieDanychWE sprawdzanieDanychWE = new SprawdzanieDanychWE();
         Scanner reader = new Scanner(System.in);
 
         String numer;

@@ -4,18 +4,16 @@ import com.warta.Util.SprawdzanieDanychWE;
 import interfaces.UruchamianyProgram;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
 
-    private ArrayList<String> menu = new ArrayList<>();
+    private ArrayList<String> menuList = new ArrayList<>();
     private ArrayList<UruchamianyProgram> dostepneFunkcje = new ArrayList<>();
 
 
-    public ArrayList<String> getMenu() {
-        return menu;
+    public ArrayList<String> getMenuList() {
+        return menuList;
     }
 
 
@@ -25,7 +23,7 @@ public class Menu {
 
 
     public void addMenu(String opis, UruchamianyProgram obiektDoMenu) {
-        this.menu.add(opis);
+        this.menuList.add(opis);
         this.dostepneFunkcje.add(obiektDoMenu);
 
     }
@@ -42,8 +40,8 @@ public class Menu {
 
 
         System.out.println("MENU:");
-        for (int i = 0; i < menu.size(); i++)
-            System.out.println(i + ": " + menu.get(i));
+        for (int i = 0; i < menuList.size(); i++)
+            System.out.println(i + ": " + menuList.get(i));
 
 
         System.out.println("\nWybierz funkcję programu :");
@@ -59,7 +57,7 @@ public class Menu {
             numer = reader.next();
             toNumeric = sprawdzanieDanychWE.sprawdzNumeric(numer);
             if (toNumeric) {
-                int wielkoscMenu = this.getMenu().size() - 1;
+                int wielkoscMenu = this.getMenuList().size() - 1;
                 int num = Integer.parseInt(numer);
                 if (num > wielkoscMenu) {
                     System.out.println("Wpisz wartość z zakresu 0 - " + wielkoscMenu + "\n");

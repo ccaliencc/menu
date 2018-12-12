@@ -44,7 +44,7 @@ public class SredniaWartosc implements UruchamianyProgram{
         Scanner reader = new Scanner(System.in);
         double sum = 0.0;
         double number;
-        boolean toNumeric = false;
+        boolean toNumeric;
         String numer;
         do {
             System.out.print("Wpisz liczbę lub 'licz' żeby wyliczyć średnią:  ");

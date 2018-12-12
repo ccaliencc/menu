@@ -17,9 +17,9 @@ public class TablicaStringow {
         this.timer = timer;
     }
 
-    static String horizon = "_";
-    static String ball = "o";
-    static String vertical = "|";
+    private static String horizon = "_";
+    private static String ball = "o";
+    private static String vertical = "|";
     String joined;
     private boolean blokuj;
 

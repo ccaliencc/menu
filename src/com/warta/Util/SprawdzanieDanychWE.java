@@ -6,7 +6,7 @@ public class SprawdzanieDanychWE {
     {
         boolean poprawne=false;
         try {
-            int num = Integer.parseInt(Wartosc);
+            Integer.parseInt(Wartosc);
             poprawne=true;
 
         }
@@ -14,7 +14,7 @@ public class SprawdzanieDanychWE {
         }
 
         try {
-            double num = Double.parseDouble(Wartosc);
+            Double.parseDouble(Wartosc);
             poprawne=true;
 
         }
