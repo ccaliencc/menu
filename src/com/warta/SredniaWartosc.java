@@ -50,13 +50,14 @@ public class SredniaWartosc implements UruchamianyProgram{
             System.out.print("Wpisz liczbę lub 'licz' żeby wyliczyć średnią:  ");
 
             numer = reader.next();
-            toNumeric = sprawdzanieDanychWE.sprawdzNumeric(numer);
+            if (!numer.equals("licz")) {
+                toNumeric = sprawdzanieDanychWE.sprawdzNumeric(numer);
+                if (toNumeric) {
+                    number = Double.parseDouble(numer);
+                    System.out.println("Wpisałeś liczbę: " + number);
 
-            if (!numer.equals("licz")&& toNumeric) {
-                number = Double.parseDouble(numer);
-                System.out.println("Wpisałeś liczbę: " + number);
-
-                lista.add(number);
+                    lista.add(number);
+                }
             }
         }
         while (!numer.equals("licz"));
