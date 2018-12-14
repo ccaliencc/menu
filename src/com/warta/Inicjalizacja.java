@@ -20,6 +20,8 @@ public class Inicjalizacja {
         pingPong.setOpisFunkcji("Ping Pong");
         Szlaczek szlaczek = new Szlaczek();
         szlaczek.setOpisFunkcji("Szlaczek");
+        MegaInkrementator megaInkrementator = new MegaInkrementator();
+        megaInkrementator.setOpisFunkcji("Mega Inkrementator");
 
 
 
@@ -28,6 +30,7 @@ public class Inicjalizacja {
         dostepneFunkcje.add(generatorLiczbLosowych);
         dostepneFunkcje.add(pingPong);
         dostepneFunkcje.add(szlaczek);
+        dostepneFunkcje.add(megaInkrementator);
 
         for (int i = 0; i < dostepneFunkcje.size(); i++)
             menu.addMenu(dostepneFunkcje.get(i).getOpisFunkcji(), dostepneFunkcje.get(i));

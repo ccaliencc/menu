@@ -55,16 +55,18 @@ public class Menu {
             SprawdzanieDanychWE sprawdzanieDanychWE = new SprawdzanieDanychWE();
             this.wczytajMenu();
             numer = reader.next();
-            toNumeric = sprawdzanieDanychWE.sprawdzNumeric(numer);
-            if (toNumeric) {
-                int wielkoscMenu = this.getMenuList().size() - 1;
-                int num = Integer.parseInt(numer);
-                if (num > wielkoscMenu) {
-                    System.out.println("Wpisz wartość z zakresu 0 - " + wielkoscMenu + "\n");
+            if (!numer.equals("exit")) {
+                toNumeric = sprawdzanieDanychWE.sprawdzNumeric(numer);
+                if (toNumeric) {
+                    int wielkoscMenu = this.getMenuList().size() - 1;
+                    int num = Integer.parseInt(numer);
+                    if (num > wielkoscMenu) {
+                        System.out.println("Wpisz wartość z zakresu 0 - " + wielkoscMenu + "\n");
 
-                } else {
-                    this.getDostepneFunkcje().get(num).uruchom();
+                    } else {
+                        this.getDostepneFunkcje().get(num).uruchom();
 
+                    }
                 }
             }
 
